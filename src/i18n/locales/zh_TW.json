@@ -222,6 +222,7 @@
   "current_online": "當前線上",
   "current_time": "當前時間",
   "region_overview": "點亮地區",
+  "asset_overview": "資產概覽",
   "traffic_overview": "流量概覽",
   "network_speed": "網路速率",
   "status_settings": "狀態顯示設定",
@@ -355,6 +356,11 @@
     "lime": "青檸色",
     "mint": "薄荷色",
     "sky": "天藍色"
+  },
+  "modernCard": {
+    "pingStats": "延遲統計",
+    "latency": "延遲",
+    "loss": "丟包"
   },
   "chart": {
     "cpu_usage": "CPU 使用率",

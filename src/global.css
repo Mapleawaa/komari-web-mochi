@@ -137,17 +137,76 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  html,
+  body,
+  #root {
+    max-width: 100%;
+    overflow-x: hidden;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
 
+.home-dashboard-shell {
+  width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.main-content {
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+  box-sizing: border-box;
+}
+
+.layout {
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.dashboard-callouts,
+.dashboard-callouts [data-radix-callout-root],
+.dashboard-callouts .rt-CalloutRoot {
+  width: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.dashboard-callouts .rt-CalloutText {
+  min-width: 0;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.dashboard-callouts .rt-Text {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.nav-bar {
+  width: 100%;
+  min-width: 0 !important;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--gray-a4);
+  background: color-mix(in srgb, var(--color-background) 88%, transparent);
+  backdrop-filter: blur(14px);
+}
+
 /* 全局离线节点红色明显指示 */
 .node-card-offline {
-  border: 2px solid var(--red-9) !important;
-  background: linear-gradient(135deg, var(--red-a2) 0%, var(--red-a3) 100%) !important;
-  box-shadow: 0 0 0 1px var(--red-a5), 0 2px 12px var(--red-a4) !important;
+  border: 1px solid var(--red-a7) !important;
+  background: color-mix(in srgb, var(--red-a2) 75%, var(--color-background)) !important;
+  box-shadow: 0 0 0 1px var(--red-a4), 0 10px 30px var(--red-a3) !important;
   position: relative;
   transition: all 0.3s ease;
 }
@@ -167,14 +226,14 @@
     var(--red-a2) 24px
   );
   pointer-events: none;
-  opacity: 0.35;
+  opacity: 0.16;
   border-radius: inherit;
   z-index: 0;
 }
 
 .node-card-offline:hover {
-  border-color: var(--red-10) !important;
-  box-shadow: 0 0 0 1px var(--red-a6), 0 4px 16px var(--red-a5) !important;
+  border-color: var(--red-9) !important;
+  box-shadow: 0 0 0 1px var(--red-a5), 0 14px 36px var(--red-a4) !important;
 }
 
 /* 确保内容在斜纹之上 */

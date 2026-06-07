@@ -223,6 +223,7 @@
   "current_online": "オンライン状況",
   "current_time": "現在時刻",
   "region_overview": "アクティブ地域",
+  "asset_overview": "資産概要",
   "traffic_overview": "トラフィック概要",
   "network_speed": "ネットワーク速度",
   "status_settings": "ステータス表示設定",
@@ -357,6 +358,11 @@
     "lime": "ライム",
     "mint": "ミント",
     "sky": "スカイ"
+  },
+  "modernCard": {
+    "pingStats": "Ping 統計",
+    "latency": "レイテンシ",
+    "loss": "損失"
   },
   "chart": {
     "cpu_usage": "CPU使用率",

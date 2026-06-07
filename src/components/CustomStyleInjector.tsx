@@ -158,7 +158,7 @@ export const CustomStyleInjector = () => {
         .footer,
         .rt-ScrollAreaViewport,
         .radix-themes {
-          color: #1a1a1a !important;
+          color: var(--gray-12) !important;
         }
 
         .dark body,
@@ -167,18 +167,18 @@ export const CustomStyleInjector = () => {
         .dark .footer,
         .dark .rt-ScrollAreaViewport,
         .dark .radix-themes {
-          color: #f0f0f0 !important;
+          color: var(--gray-12) !important;
         }
 
         /* StatusBar - 只设置基础文本颜色，不影响图标和内联样式 */
         .status-card > div > div > div > span:not([style*="color"]),
         .status-card > div > div > div > p:not([style*="color"]) {
-          color: #1a1a1a !important;
+          color: var(--gray-12) !important;
         }
 
         .dark .status-card > div > div > div > span:not([style*="color"]),
         .dark .status-card > div > div > div > p:not([style*="color"]) {
-          color: #f0f0f0 !important;
+          color: var(--gray-12) !important;
         }
 
         /* 导航栏标题文字 - 使用 Radix UI 主文本颜色 */
@@ -189,11 +189,6 @@ export const CustomStyleInjector = () => {
         /* 导航栏描述文字 - 使用 Radix UI accent 颜色 */
         .nav-bar > div > div > label {
           color: var(--accent-11) !important;
-        }
-
-        /* 保留所有内联样式颜色 */
-        [style*="color"] {
-          color: revert !important;
         }
 
         /* 按钮、图标按钮 - 使用 Radix UI 颜色变量 */

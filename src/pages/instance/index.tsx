@@ -43,7 +43,7 @@ export default function InstancePage() {
       .then((res) => res.json())
       .then((data) => setRecent(data.data.slice(-length)))
       .catch((err) => console.error("Failed to fetch recent data:", err));
-  }, [uuid]);
+  }, [length, uuid]);
   // 动态追加数据
   useEffect(() => {
     const unsubscribe = onRefresh((resp) => {
@@ -70,7 +70,7 @@ export default function InstancePage() {
 
     // 清理订阅
     return unsubscribe;
-  }, [onRefresh, uuid]);
+  }, [length, onRefresh, uuid]);
   // #region 布局
   if (isMobile && node) {
     return (

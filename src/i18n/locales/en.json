@@ -222,6 +222,7 @@
   "current_online": "Current Online",
   "current_time": "Current Time",
   "region_overview": "Region",
+  "asset_overview": "Assets",
   "traffic_overview": "Traffic Overview",
   "network_speed": "Network Speed",
   "status_settings": "Status Settings",
@@ -356,6 +357,11 @@
     "lime": "Lime",
     "mint": "Mint",
     "sky": "Sky"
+  },
+  "modernCard": {
+    "pingStats": "Ping Stats",
+    "latency": "Latency",
+    "loss": "Loss"
   },
   "chart": {
     "cpu_usage": "CPU Usage",

@@ -296,6 +296,7 @@
   "copy_success": "Berhasil disalin!",
   "current_online": "Sedang online",
   "current_time": "Waktu saat ini",
+  "asset_overview": "Ikhtisar Aset",
   "delete": "Hapus",
   "exec": {
     "allCompleted": "Semua tugas telah selesai dieksekusi",
@@ -401,6 +402,11 @@
     "hardware_info": "Hardware Information",
     "network_info": "Network Information",
     "runtime_info": "Runtime Information"
+  },
+  "modernCard": {
+    "pingStats": "Statistik Ping",
+    "latency": "Latensi",
+    "loss": "Loss"
   },
   "nodes": {
     "empty": "Tidak ada data server"
