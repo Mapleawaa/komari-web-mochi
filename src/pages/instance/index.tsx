@@ -91,9 +91,9 @@ export default function InstancePage() {
                 {statusText}
               </div>
             </div>
-        </div>
+          </div>
 
-        <MobileDetailsCard node={node} liveData={liveNodeData} />
+          <MobileDetailsCard node={node} liveData={liveNodeData} />
 
           <div className="node-detail-chart-card node-detail-animate" style={{ ["--delay" as any]: "200ms" }}>
             <div className="node-detail-chart-header">
@@ -158,12 +158,12 @@ export default function InstancePage() {
           <div className="node-detail-chart-header">
             <div className="node-detail-section-title">{t("nodeCard.chart")}</div>
             <SegmentedControl.Root
-                radius="small"
-                value={chartView}
-                onValueChange={(value) => setChartView(value as "load" | "ping")}
-                size="2"
-                className="node-detail-toggle"
-              >
+              radius="small"
+              value={chartView}
+              onValueChange={(value) => setChartView(value as "load" | "ping")}
+              size="2"
+              className="node-detail-toggle"
+            >
               <SegmentedControl.Item value="load">
                 {t("nodeCard.load")}
               </SegmentedControl.Item>
