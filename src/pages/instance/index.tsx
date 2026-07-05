@@ -14,7 +14,7 @@ import { MobileLoadChart } from "@/components/MobileLoadChart";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { DesktopDetailsCard } from "@/components/DesktopDetailsCard";
 import { getOSImage } from "@/utils";
-import { formatUptime } from "@/components/Node";
+
 import "./instance-detail.css";
 
 export default function InstancePage() {
@@ -33,8 +33,6 @@ export default function InstancePage() {
   const nodeName = node?.name ?? uuid ?? "";
   const nodeUuid = node?.uuid ?? uuid ?? "";
   const osIcon = getOSImage(node?.os ?? "");
-  const uptimeLabel = liveNodeData?.uptime ? formatUptime(liveNodeData.uptime, t) : "-";
-  const updatedLabel = liveNodeData?.updated_at ? new Date(liveNodeData.updated_at).toLocaleString() : "-";
   const versionLabel = node?.version || "-";
   const statusText = isOnline ? t("nodeCard.online") : t("nodeCard.offline");
 
@@ -84,6 +82,7 @@ export default function InstancePage() {
                 <div className="node-detail-title-text">
                   <div className="node-detail-name-row">
                     <span className="node-detail-name">{nodeName}</span>
+                    <span className="node-detail-version-badge">{versionLabel}</span>
                     <span className="node-detail-mono node-detail-uuid-pill">{nodeUuid}</span>
                   </div>
                 </div>
@@ -92,29 +91,15 @@ export default function InstancePage() {
                 {statusText}
               </div>
             </div>
-            <div className="node-detail-hero-info">
-              <div className="node-detail-hero-item">
-                <span className="node-detail-hero-label">{t("nodeCard.version")}</span>
-                <span className="node-detail-hero-value">{versionLabel}</span>
-              </div>
-              <div className="node-detail-hero-item">
-                <span className="node-detail-hero-label">{t("nodeCard.uptime")}</span>
-                <span className="node-detail-hero-value">{uptimeLabel}</span>
-              </div>
-              <div className="node-detail-hero-item">
-                <span className="node-detail-hero-label">{t("nodeCard.last_updated")}</span>
-                <span className="node-detail-hero-value">{updatedLabel}</span>
-              </div>
-            </div>
-          </div>
+        </div>
 
-          <MobileDetailsCard node={node} liveData={liveNodeData} />
+        <MobileDetailsCard node={node} liveData={liveNodeData} />
 
           <div className="node-detail-chart-card node-detail-animate" style={{ ["--delay" as any]: "200ms" }}>
             <div className="node-detail-chart-header">
               <div className="node-detail-section-title">{t("nodeCard.chart")}</div>
               <SegmentedControl.Root
-                radius="full"
+                radius="small"
                 value={chartView}
                 onValueChange={(value) => setChartView(value as "load" | "ping")}
                 className="node-detail-toggle"
@@ -156,26 +141,13 @@ export default function InstancePage() {
               <div className="node-detail-title-text">
                 <div className="node-detail-name-row">
                   <span className="node-detail-name">{nodeName}</span>
+                  <span className="node-detail-version-badge">{versionLabel}</span>
                   <span className="node-detail-mono node-detail-uuid-pill">{nodeUuid}</span>
                 </div>
               </div>
             </div>
             <div className={`node-detail-status ${isOnline ? "online" : "offline"}`}>
               {statusText}
-            </div>
-          </div>
-          <div className="node-detail-hero-info">
-            <div className="node-detail-hero-item">
-              <span className="node-detail-hero-label">{t("nodeCard.version")}</span>
-              <span className="node-detail-hero-value">{versionLabel}</span>
-            </div>
-            <div className="node-detail-hero-item">
-              <span className="node-detail-hero-label">{t("nodeCard.uptime")}</span>
-              <span className="node-detail-hero-value">{uptimeLabel}</span>
-            </div>
-            <div className="node-detail-hero-item">
-              <span className="node-detail-hero-label">{t("nodeCard.last_updated")}</span>
-              <span className="node-detail-hero-value">{updatedLabel}</span>
             </div>
           </div>
         </div>
@@ -186,12 +158,12 @@ export default function InstancePage() {
           <div className="node-detail-chart-header">
             <div className="node-detail-section-title">{t("nodeCard.chart")}</div>
             <SegmentedControl.Root
-              radius="full"
-              value={chartView}
-              onValueChange={(value) => setChartView(value as "load" | "ping")}
-              size="2"
-              className="node-detail-toggle"
-            >
+                radius="small"
+                value={chartView}
+                onValueChange={(value) => setChartView(value as "load" | "ping")}
+                size="2"
+                className="node-detail-toggle"
+              >
               <SegmentedControl.Item value="load">
                 {t("nodeCard.load")}
               </SegmentedControl.Item>

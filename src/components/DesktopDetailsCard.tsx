@@ -1,7 +1,7 @@
 import { Tooltip } from "@radix-ui/themes";
 import { useLayoutEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { formatBytes, formatUptime } from "./Node";
+import { formatBytes } from "./Node";
 import { getTrafficStats } from "@/utils";
 import type { NodeBasicInfo } from "@/contexts/NodeListContext";
 import type { Record } from "@/types/LiveData";
@@ -194,13 +194,8 @@ export const DesktopDetailsCard: React.FC<DesktopDetailsCardProps> = ({
           <div className="node-detail-card">
           <div className="node-detail-section-title">{t("nodeCard.runtime_info")}</div>
           <div className="node-detail-runtime-stack" ref={runtimeStackRef}>
-            <DetailRow label={t("nodeCard.uptime")} value={liveData?.uptime ? formatUptime(liveData.uptime, t) : "-"} />
             <DetailRow label={t("nodeCard.process")} value={liveData?.process?.toString() || "-"} />
             <DetailRow label={t("nodeCard.load")} value={loadLines} />
-            <DetailRow
-              label={t("nodeCard.last_updated")}
-              value={liveData?.updated_at ? new Date(liveData.updated_at).toLocaleString() : "-"}
-            />
           </div>
         </div>
         <div className="node-detail-card node-detail-latency-inline">
