@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { formatBytes } from "./Node";
+import { formatBytes, formatUptime } from "./Node";
 import { getTrafficStats } from "@/utils";
 import type { NodeBasicInfo } from "@/contexts/NodeListContext";
 import type { Record } from "@/types/LiveData";
@@ -69,11 +69,9 @@ export const MobileDetailsCard: React.FC<MobileDetailsCardProps> = ({
     value == null ? "-" : `${value.toFixed(1)}%`;
   const formatLoad = (value?: number) =>
     typeof value === "number" && Number.isFinite(value) ? value.toFixed(2) : "-";
-  const loadLines = [
-    `1m: ${formatLoad(liveData?.load?.load1)}`,
-    `5m: ${formatLoad(liveData?.load?.load5)}`,
-    `15m: ${formatLoad(liveData?.load?.load15)}`,
-  ];
+  const loadLine = `1m: ${formatLoad(liveData?.load?.load1)} / 5m: ${formatLoad(liveData?.load?.load5)} / 15m: ${formatLoad(liveData?.load?.load15)}`;
+  const uptimeLabel = liveData?.uptime ? formatUptime(liveData.uptime, t) : "-";
+  const updatedLabel = liveData?.updated_at ? new Date(liveData.updated_at).toLocaleString() : "-";
   const latencyRows = pingSummary.items.map((item) => ({
     name: item.name,
     current: formatLatency(item.current),
@@ -157,7 +155,9 @@ export const MobileDetailsCard: React.FC<MobileDetailsCardProps> = ({
           <div className="node-detail-section-title">{t("nodeCard.runtime_info")}</div>
           <div className="node-detail-runtime-stack">
             <DetailRow label={t("nodeCard.process")} value={liveData?.process?.toString() || "-"} />
-            <DetailRow label={t("nodeCard.load")} value={loadLines} />
+            <DetailRow label={t("nodeCard.load")} value={loadLine} />
+            <DetailRow label={t("nodeCard.uptime")} value={uptimeLabel} />
+            <DetailRow label={t("nodeCard.last_updated")} value={updatedLabel} />
           </div>
         </div>
         <div className="node-detail-card node-detail-latency-inline">

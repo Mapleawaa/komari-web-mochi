@@ -13,7 +13,6 @@ import { MobileDetailsCard } from "@/components/MobileDetailsCard";
 import { MobileLoadChart } from "@/components/MobileLoadChart";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { DesktopDetailsCard } from "@/components/DesktopDetailsCard";
-import { formatUptime } from "@/components/Node";
 import { getOSImage } from "@/utils";
 
 import "./instance-detail.css";
@@ -35,8 +34,6 @@ export default function InstancePage() {
   const nodeUuid = node?.uuid ?? uuid ?? "";
   const osIcon = getOSImage(node?.os ?? "");
   const versionLabel = node?.version || "-";
-  const uptimeLabel = liveNodeData?.uptime ? formatUptime(liveNodeData.uptime, t) : "-";
-  const updatedLabel = liveNodeData?.updated_at ? new Date(liveNodeData.updated_at).toLocaleString() : "-";
   const statusText = isOnline ? t("nodeCard.online") : t("nodeCard.offline");
 
   useEffect(() => {
@@ -87,16 +84,6 @@ export default function InstancePage() {
                     <span className="node-detail-name">{nodeName}</span>
                     <span className="node-detail-version-badge">{versionLabel}</span>
                     <span className="node-detail-mono node-detail-uuid-pill">{nodeUuid}</span>
-                  </div>
-                  <div className="node-detail-hero-meta">
-                    <span className="node-detail-hero-meta-item">
-                      <span className="node-detail-hero-meta-label">{t("nodeCard.uptime")}</span>
-                      <span className="node-detail-hero-meta-value">{uptimeLabel}</span>
-                    </span>
-                    <span className="node-detail-hero-meta-item">
-                      <span className="node-detail-hero-meta-label">{t("nodeCard.last_updated")}</span>
-                      <span className="node-detail-hero-meta-value">{updatedLabel}</span>
-                    </span>
                   </div>
                 </div>
               </div>
